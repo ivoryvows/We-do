@@ -1,1 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding Celebration | Oheka Castle</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        babypink: '#fde8ed',
+                        softrose: '#f4c2c2',
+                        gold: '#d4af37',
+                        goldlight: '#f3e5ab',
+                        deeprose: '#a85b6c',
+                        darkgold: '#996515'
+                    },
+                    fontFamily: {
+                        script: ['"Great Vibes"', 'cursive'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        cinzel: ['"Cinzel Decorative"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
+    <style>
+        /* Custom Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Continuous Marble Pink Background */
+        body {
+            background-color: #fcedf0;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(255, 235, 240, 0.9) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(244, 194, 194, 0.7) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(253, 226, 233, 0.5) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 230, 238, 0.8) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(244, 194, 194, 0.7) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #4a3b32;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Floating Tiny Particle Canvas */
+        #orbCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Floating Music Player Styling */
+        .music-player-card {
+            background: rgba(253, 232, 237, 0.88);
+            backdrop-filter: blur(12px);
+            border: 2px solid #d4af37;
+            box-shadow: 0 10px 30px rgba(168, 91, 108, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fde8ed;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+
+        .invitation-card-container {
+            box-shadow: 0 15px 35px rgba(168, 91, 108, 0.12);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <!-- Floating Canvas for Tiny Gold & Pink Glowing Dots -->
+    <canvas id="orbCanvas"></canvas>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="piano.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- SECTION 1: Cover Video (1.MOV) -->
+    <section id="cover-section" class="relative w-full h-screen flex flex-col justify-end items-center overflow-hidden bg-black">
+        <!-- Video Background -->
+        <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
+            <source src="1.MOV" type="video/mp4">
+            <source src="1.MOV" type="video/quicktime">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Floating Baby Pink & Gold Music Player at Bottom of 1.MOV -->
+        <div class="relative z-30 mb-8 w-11/12 max-w-md">
+            <div class="music-player-card rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 hover:scale-105">
+                <div class="flex items-center space-x-4">
+                    <button id="playPauseBtn" onclick="toggleAudio(event)" class="w-12 h-12 rounded-full bg-gradient-to-r from-gold to-yellow-600 text-white flex items-center justify-center shadow-md focus:outline-none hover:opacity-90 transition-transform active:scale-95">
+                        <i id="playIcon" class="fa-solid fa-play text-lg ml-0.5"></i>
+                    </button>
+                    <div>
+                        <h4 class="font-serif text-sm font-semibold text-deeprose tracking-wide">Romantic Piano Melodies</h4>
+                        <p class="text-xs text-gray-600 font-sans">piano.mp3</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <span class="w-1 h-4 bg-gold animate-pulse rounded-full"></span>
+                    <span class="w-1 h-6 bg-deeprose animate-pulse delay-75 rounded-full"></span>
+                    <span class="w-1 h-3 bg-gold animate-pulse delay-150 rounded-full"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN GALLERY CONTAINER (2.JPG - 7.JPG) -->
+    <main id="gallery" class="relative z-10 max-w-2xl mx-auto px-3 py-10 space-y-10">
+
+        <!-- 2.JPG SECTION + MINIMALIST COUNTDOWN -->
+        <section class="rounded-2xl overflow-hidden p-1">
+            <div class="relative">
+                <img src="2.JPG" alt="Wedding Invitation Page 2" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=2.JPG';">
+                
+                <!-- Pure Minimalist Golden Countdown (No borders/boxes/titles) -->
+                <div class="py-6 text-center">
+                    <div class="inline-flex items-center justify-center space-x-2 md:space-x-4 font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold tracking-widest text-gold-gradient">
+                        <span id="days">00</span>
+                        <span class="text-gold opacity-60">:</span>
+                        <span id="hours">00</span>
+                        <span class="text-gold opacity-60">:</span>
+                        <span id="minutes">00</span>
+                        <span class="text-gold opacity-60">:</span>
+                        <span id="seconds">00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3.JPG SECTION WITH HIDDEN CLICKABLE GOOGLE MAPS AREA -->
+        <section class="rounded-2xl overflow-hidden p-1 relative">
+            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                <img src="3.JPG" alt="The Venue - Oheka Castle" class="w-full h-auto rounded-xl block" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=3.JPG';">
+                
+                <!-- Completely Hidden Map Link Overlay over "VIEW GOOGLE MAPS" region -->
+                <div onclick="openGoogleMaps()" class="absolute bottom-[38%] left-0 right-0 h-[12%] cursor-pointer" title="View Google Maps"></div>
+            </div>
+        </section>
+
+        <!-- 4.jpg SECTION -->
+        <section class="rounded-2xl overflow-hidden p-1">
+            <img src="4.jpg" alt="Wedding Invitation Page 4" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=4.jpg';">
+        </section>
+
+        <!-- 5.jpg SECTION -->
+        <section class="rounded-2xl overflow-hidden p-1">
+            <img src="5.jpg" alt="Wedding Invitation Page 5" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=5.jpg';">
+        </section>
+
+        <!-- 6.jpg SECTION WITH HIDDEN RSVP CLICKABLE AREA -->
+        <section class="rounded-2xl overflow-hidden p-1 relative">
+            <div class="relative rounded-xl overflow-hidden shadow-lg">
+                <img src="6.jpg" alt="RSVP Section Page 6" class="w-full h-auto rounded-xl block" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=6.jpg';">
+                
+                <!-- Completely Hidden RSVP Trigger Overlay over RSVP Button region in image -->
+                <div onclick="openRsvpModal()" class="absolute bottom-[4%] left-[10%] right-[10%] h-[12%] cursor-pointer" title="Click to RSVP"></div>
+            </div>
+        </section>
+
+        <!-- 7.jpg SECTION -->
+        <section class="rounded-2xl overflow-hidden p-1">
+            <img src="7.jpg" alt="Wedding Invitation Page 7" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=7.jpg';">
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 text-center py-8 text-xs text-deeprose font-serif">
+        <p class="font-script text-2xl text-gold mb-1">With Love & Gratitude</p>
+        <p>© 2027 Celebration Invitation</p>
+    </footer>
+
+    <!-- RSVP MODAL (Matches Attached Reference Image) -->
+    <div id="rsvpModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div class="relative w-full max-w-md bg-[#fdf5f7] rounded-3xl p-6 md:p-8 shadow-2xl border-2 border-gold max-h-[90vh] overflow-y-auto">
+            <!-- Close Button -->
+            <button onclick="closeRsvpModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-babypink text-deeprose flex items-center justify-center hover:bg-gold hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="text-center mb-6">
+                <p class="font-script text-3xl text-gold">please</p>
+                <h2 class="font-serif text-4xl text-deeprose font-bold tracking-widest -mt-2">RSVP</h2>
+                <p class="font-script text-2xl text-gold mt-1">by July 15</p>
+            </div>
+
+            <!-- RSVP Form -->
+            <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)" class="space-y-4">
+                
+                <!-- Field 1: Name -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
+                    <label class="block text-xs font-semibold text-deeprose mb-2">
+                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> Your Name *
+                    </label>
+                    <input type="text" required placeholder="Your answer" class="w-full border-b border-gray-300 focus:border-gold focus:outline-none text-sm py-1 font-sans bg-transparent">
+                </div>
+
+                <!-- Field 2: Attendance -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
+                    <label class="block text-xs font-semibold text-deeprose mb-3">
+                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> Will you honor us with your presence on this special day? *
+                    </label>
+                    <div class="space-y-2 text-xs text-gray-700">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="attendance" value="Yes" required class="accent-gold">
+                            <span>Yes, I'd love to!</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="attendance" value="No" class="accent-gold">
+                            <span>Sadly, I won't be able to attend.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Field 3: Guest -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
+                    <label class="block text-xs font-semibold text-deeprose mb-3">
+                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> Will you be bringing a guest to share this special moment?
+                    </label>
+                    <div class="space-y-2 text-xs text-gray-700">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="plusone" value="No" checked class="accent-gold">
+                            <span>No, I'll be attending on my own.</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="plusone" value="Yes" class="accent-gold">
+                            <span>Yes, I'll have someone joining me!</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Field 4: Guest Count -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
+                    <label class="block text-xs font-semibold text-deeprose mb-3">
+                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> How many people will come?
+                    </label>
+                    <div class="space-y-2 text-xs text-gray-700">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="count" value="1" checked class="accent-gold">
+                            <span>Only me</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="count" value="2" class="accent-gold">
+                            <span>2 People</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="count" value="3+" class="accent-gold">
+                            <span>3+ People</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-gold to-yellow-600 text-white rounded-full font-semibold text-sm tracking-widest shadow-md hover:opacity-90 active:scale-95 transition-transform">
+                    SUBMIT RSVP
+                </button>
+            </form>
+
+            <!-- Success Message Notification Container -->
+            <div id="rsvpSuccessMsg" class="hidden text-center py-8">
+                <i class="fa-solid fa-circle-check text-4xl text-gold mb-3"></i>
+                <h3 class="font-serif text-xl font-bold text-deeprose">Thank You!</h3>
+                <p class="text-xs text-gray-600 mt-2">Your response has been received successfully.</p>
+                <button onclick="closeRsvpModal()" class="mt-6 px-6 py-2 bg-babypink text-deeprose text-xs font-semibold rounded-full hover:bg-gold hover:text-white transition-colors">
+                    Close Window
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. Audio Player Logic ---
+        const audio = document.getElementById('bgMusic');
+        const playIcon = document.getElementById('playIcon');
+
+        function toggleAudio(e) {
+            if (e) e.stopPropagation();
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                }).catch(err => {
+                    console.log("Audio play blocked by browser interaction policy.", err);
+                });
+            } else {
+                audio.pause();
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+            }
+        }
+
+        // --- 2. Smooth Scroll to Gallery ---
+        function scrollToGallery() {
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- 3. Open Google Maps for Oheka Castle ---
+        function openGoogleMaps() {
+            window.open('https://maps.google.com/?q=Oheka+Castle+135+West+Hills+Rd+Huntington+NY+11743', '_blank');
+        }
+
+        // --- 4. Live Countdown Timer (Target: July 22, 2027) ---
+        const targetDate = new Date('July 22, 2027 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- 5. RSVP Modal Logic ---
+        function openRsvpModal() {
+            const modal = document.getElementById('rsvpModal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeRsvpModal() {
+            const modal = document.getElementById('rsvpModal');
+            modal.classList.add('hidden');
+        }
+
+        function handleRsvpSubmit(e) {
+            e.preventDefault();
+            document.getElementById('rsvpForm').classList.add('hidden');
+            document.getElementById('rsvpSuccessMsg').classList.remove('hidden');
+        }
+
+        // --- 6. Floating Tiny Pink & Gold Glowing Dots (Particles) ---
+        const canvas = document.getElementById('orbCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class TinyDot {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.radius = Math.random() * 1.8 + 0.6; // Tiny dot radius (0.6px to 2.4px)
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = -Math.random() * 0.5 - 0.1; // Gentle floating upward
+                this.alpha = Math.random() * 0.7 + 0.2;
+                this.isGold = Math.random() > 0.45;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.y < -10 || this.x < -10 || this.x > width + 10) {
+                    this.y = height + 10;
+                    this.x = Math.random() * width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.fillStyle = this.isGold ? '#d4af37' : '#f4c2c2';
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = this.isGold ? '#f3e5ab' : '#ffffff';
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // 90 tiny floating glowing dots across background
+        const dots = Array.from({ length: 90 }, () => new TinyDot());
+
+        function animateDots() {
+            ctx.clearRect(0, 0, width, height);
+            dots.forEach(dot => {
+                dot.update();
+                dot.draw();
+            });
+            requestAnimationFrame(animateDots);
+        }
+
+        window.onload = function() {
+            animateDots();
+        };
+    </script>
+</body>
+</html>
