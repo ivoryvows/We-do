@@ -164,7 +164,7 @@ body {
   vertical-align: top;
 }
 
-/* COUNTDOWN DIRECTLY ON 2.JPG - NO BOX */
+/* GOLDEN COUNTDOWN DIRECTLY ON 2.JPG */
 .countdown-wrap {
   position: relative;
   width: 100%;
@@ -183,7 +183,7 @@ body {
   left: 50%;
   bottom: 22%;
   transform: translateX(-50%);
-  width: 90%;
+  width: 94%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -208,49 +208,21 @@ body {
   font-size: clamp(34px, 8vw, 48px);
   line-height: 1;
   font-weight: 700;
-  color: #bd9417;
+  color: #bd9147;
   font-variant-numeric: tabular-nums;
-text-shadow: 0 2px 5px rgba(255, 246, 220, .95)
+  text-shadow: 0 2px 5px rgba(255,246,220,.95);
 }
 
 .time-label {
   display: block;
   margin-top: 7px;
   font-size: clamp(10px, 2.5vw, 12px);
+  font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #a77a35;
- text-shadow: 0 1px 4px rgba(255, 246, 220, .95);
-
+  text-shadow: 0 1px 4px rgba(255,246,220,.95);
 }
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-  .countdown {
-
-    bottom: 19%;
-
-    gap: 10px;
-
-    width: 96%;
-
-  }
-
-  .time-number {
-
-    font-size: clamp(30px, 8vw, 40px);
-
-  }
-
-  .time-label {
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-  }
 
 /* MAP IMAGE - ENTIRE IMAGE IS CLICKABLE */
 .map-link {
@@ -439,12 +411,18 @@ text-shadow: 0 2px 5px rgba(255, 246, 220, .95)
   }
 
   .countdown {
-    bottom: 12%;
-    gap: 7px;
+    bottom: 19%;
+    gap: 10px;
+    width: 96%;
   }
 
   .time-number {
-    font-size: clamp(21px, 5.8vw, 32px);
+    font-size: clamp(30px, 8vw, 40px);
+  }
+
+  .time-label {
+    font-size: 9px;
+    letter-spacing: 1px;
   }
 }
 
@@ -495,7 +473,7 @@ text-shadow: 0 2px 5px rgba(255, 246, 220, .95)
     <!-- CONNECTED INVITATION IMAGES -->
     <section class="gallery">
 
-      <!-- 2.JPG WITH COUNTDOWN DIRECTLY ON IMAGE -->
+      <!-- 2.JPG WITH GOLDEN COUNTDOWN -->
       <div class="countdown-wrap">
         <img src="2.JPG" alt="Wedding invitation page">
 
@@ -728,10 +706,7 @@ function createParticles() {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-
-      // Smaller dots
       radius: Math.random() * 0.9 + 0.45,
-
       speed: Math.random() * 0.4 + 0.15,
       drift: (Math.random() - 0.5) * 0.3,
       alpha: Math.random() * 0.35 + 0.2,
