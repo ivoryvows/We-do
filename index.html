@@ -1,453 +1,1049 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding Celebration | Oheka Castle</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        babypink: '#fde8ed',
-                        softrose: '#f4c2c2',
-                        gold: '#d4af37',
-                        goldlight: '#f3e5ab',
-                        deeprose: '#a85b6c',
-                        darkgold: '#996515'
-                    },
-                    fontFamily: {
-                        script: ['"Great Vibes"', 'cursive'],
-                        serif: ['"Playfair Display"', 'serif'],
-                        cinzel: ['"Cinzel Decorative"', 'serif'],
-                        sans: ['"Montserrat"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fce9ed">
 
-    <style>
-        /* Custom Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
+<title>The Wedding Celebration | Oheka Castle</title>
 
-        /* Continuous Marble Pink Background */
-        body {
-            background-color: #fcedf0;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(255, 235, 240, 0.9) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(244, 194, 194, 0.7) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(253, 226, 233, 0.5) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(255, 230, 238, 0.8) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(244, 194, 194, 0.7) 0px, transparent 50%);
-            background-attachment: fixed;
-            color: #4a3b32;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-        }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        /* Floating Tiny Particle Canvas */
-        #orbCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 20;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* Gold Gradient Text */
-        .text-gold-gradient {
-            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-        /* Floating Music Player Styling */
-        .music-player-card {
-            background: rgba(253, 232, 237, 0.88);
-            backdrop-filter: blur(12px);
-            border: 2px solid #d4af37;
-            box-shadow: 0 10px 30px rgba(168, 91, 108, 0.2);
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #fde8ed;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 4px;
-        }
+<style>
+:root {
+    --pink: #fce8ed;
+    --rose: #e8b5c1;
+    --deep: #a85b6c;
+    --gold: #d4af70;
+    --lightgold: #f5e5bd;
+}
 
-        .invitation-card-container {
-            box-shadow: 0 15px 35px rgba(168, 91, 108, 0.12);
-        }
-    </style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: #63434b;
+
+    /* Soft pink aesthetic background */
+    background-color: #fcebed;
+    background-image:
+        linear-gradient(
+            rgba(255, 240, 244, 0.76),
+            rgba(255, 237, 242, 0.78)
+        ),
+        url('pink-aesthetic-bg.jpg'),
+        radial-gradient(circle at 15% 20%, #fff7f8, transparent 40%),
+        radial-gradient(circle at 85% 75%, #eec4cf, transparent 45%);
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* GOLD TEXT */
+
+.gold-text {
+    background: linear-gradient(
+        135deg,
+        #a87935,
+        #f9e6aa,
+        #b8893e,
+        #fff1c9,
+        #aa7935
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* PARTICLES */
+
+#orbCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+}
+
+/* COVER */
+
+#cover-section {
+    position: relative;
+    height: 100svh;
+    min-height: 550px;
+    width: 100%;
+    overflow: hidden;
+    background: #1c1115;
+}
+
+#heroVideo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* LUXURY MUSIC PLAYER */
+
+.music-position {
+    position: absolute;
+    z-index: 15;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 88%;
+    max-width: 300px;
+}
+
+.music-player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 15px 9px 10px;
+
+    background: rgba(255, 237, 241, 0.84);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(212, 175, 112, 0.85);
+    border-radius: 50px;
+
+    box-shadow:
+        0 8px 25px rgba(122, 66, 78, 0.18),
+        inset 0 1px 5px rgba(255,255,255,0.8);
+
+    transition: all .3s ease;
+}
+
+.music-player:active {
+    transform: scale(.98);
+}
+
+.play-button {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.7);
+
+    color: white;
+    background: linear-gradient(145deg, #e5b4c0, #a85b6c);
+
+    box-shadow: 0 3px 12px rgba(168,91,108,.3);
+    cursor: pointer;
+}
+
+.music-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: .5px;
+    color: #995567;
+    font-weight: 600;
+}
+
+.music-subtitle {
+    font-size: 9px;
+    color: #a58b87;
+    margin-top: 2px;
+}
+
+.equalizer {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 24px;
+}
+
+.equalizer span {
+    width: 2px;
+    height: 6px;
+    border-radius: 5px;
+    background: #c69b5a;
+}
+
+.equalizer.playing span {
+    animation: equalize .65s ease-in-out infinite alternate;
+}
+
+.equalizer span:nth-child(2) {
+    animation-delay: .2s;
+}
+.equalizer span:nth-child(3) {
+    animation-delay: .4s;
+}
+.equalizer span:nth-child(4) {
+    animation-delay: .1s;
+}
+
+@keyframes equalize {
+    from { height: 4px; }
+    to { height: 20px; }
+}
+
+/* CONNECTED GALLERY */
+
+#gallery {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.gallery-section {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.gallery-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+/* COUNTDOWN INSIDE 2.JPG */
+
+.countdown-section {
+    position: relative;
+}
+
+.countdown-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2.5%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 8px 4px;
+    z-index: 3;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(5px, 2vw, 15px);
+
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(23px, 6vw, 38px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    filter: drop-shadow(0 2px 4px rgba(90,50,30,.18));
+}
+
+.countdown span {
+    color: #bd914c;
+}
+
+.countdown .separator {
+    color: #e3c58e;
+    font-size: .8em;
+}
+
+/* MAP ON ENTIRE 3.JPG */
+
+.map-touch {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* RSVP CLICKABLE AREA */
+
+.rsvp-touch {
+    position: absolute;
+    bottom: 4%;
+    left: 10%;
+    right: 10%;
+    height: 12%;
+    z-index: 4;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 24px 10px;
+    color: #a85b6c;
+}
+
+.footer-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 29px;
+    color: #bd914c;
+}
+
+/* RSVP MODAL */
+
+#rsvpModal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(40, 20, 25, .65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#rsvpModal.hidden {
+    display: none;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px 22px;
+
+    background: linear-gradient(145deg, #fff9fa, #f9e7ec);
+    border: 1.5px solid #d4af70;
+    border-radius: 25px;
+
+    box-shadow: 0 15px 50px rgba(0,0,0,.2);
+}
+
+.rsvp-field {
+    background: rgba(255,255,255,.85);
+    padding: 15px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(212,175,112,.3);
+    border-radius: 13px;
+    line-height: 1.5;
+}
+
+.rsvp-field label.heading {
+    display: block;
+    color: #a85b6c;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.rsvp-field input[type="text"] {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #dfc9c9;
+    background: transparent;
+    outline: none;
+    padding: 8px 2px;
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+}
+
+.rsvp-field input[type="radio"] {
+    accent-color: #b88952;
+}
+
+.rsvp-field .option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #66565a;
+    margin: 9px 0;
+}
+
+.submit-button {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(120deg, #d4af70, #a87945);
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+@media(max-width: 480px) {
+    #gallery {
+        padding: 0 7px;
+    }
+
+    .countdown {
+        font-size: clamp(21px, 6vw, 29px);
+        gap: 5px;
+    }
+
+    .music-position {
+        bottom: 20px;
+    }
+}
+</style>
 </head>
-<body class="relative min-h-screen">
 
-    <!-- Floating Canvas for Tiny Gold & Pink Glowing Dots -->
-    <canvas id="orbCanvas"></canvas>
+<body>
 
-    <!-- Audio Element -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="piano.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+<canvas id="orbCanvas"></canvas>
 
-    <!-- SECTION 1: Cover Video (1.MOV) -->
-    <section id="cover-section" class="relative w-full h-screen flex flex-col justify-end items-center overflow-hidden bg-black">
-        <!-- Video Background -->
-        <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
-            <source src="1.MOV" type="video/mp4">
-            <source src="1.MOV" type="video/quicktime">
-            Your browser does not support the video tag.
-        </video>
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="piano.mp3" type="audio/mpeg">
+</audio>
 
-        <!-- Floating Baby Pink & Gold Music Player at Bottom of 1.MOV -->
-        <div class="relative z-30 mb-8 w-11/12 max-w-md">
-            <div class="music-player-card rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 hover:scale-105">
-                <div class="flex items-center space-x-4">
-                    <button id="playPauseBtn" onclick="toggleAudio(event)" class="w-12 h-12 rounded-full bg-gradient-to-r from-gold to-yellow-600 text-white flex items-center justify-center shadow-md focus:outline-none hover:opacity-90 transition-transform active:scale-95">
-                        <i id="playIcon" class="fa-solid fa-play text-lg ml-0.5"></i>
-                    </button>
-                    <div>
-                        <h4 class="font-serif text-sm font-semibold text-deeprose tracking-wide">Romantic Piano Melodies</h4>
-                        <p class="text-xs text-gray-600 font-sans">piano.mp3</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-1">
-                    <span class="w-1 h-4 bg-gold animate-pulse rounded-full"></span>
-                    <span class="w-1 h-6 bg-deeprose animate-pulse delay-75 rounded-full"></span>
-                    <span class="w-1 h-3 bg-gold animate-pulse delay-150 rounded-full"></span>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- COVER VIDEO -->
+<section id="cover-section">
 
-    <!-- MAIN GALLERY CONTAINER (2.JPG - 7.JPG) -->
-    <main id="gallery" class="relative z-10 max-w-2xl mx-auto px-3 py-10 space-y-10">
+    <video id="heroVideo" autoplay loop muted playsinline>
+        <source src="1.MOV" type="video/quicktime">
+        <source src="1.MOV" type="video/mp4">
+    </video>
 
-        <!-- 2.JPG SECTION + MINIMALIST COUNTDOWN -->
-        <section class="rounded-2xl overflow-hidden p-1">
-            <div class="relative">
-                <img src="2.JPG" alt="Wedding Invitation Page 2" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=2.JPG';">
-                
-                <!-- Pure Minimalist Golden Countdown (No borders/boxes/titles) -->
-                <div class="py-6 text-center">
-                    <div class="inline-flex items-center justify-center space-x-2 md:space-x-4 font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold tracking-widest text-gold-gradient">
-                        <span id="days">00</span>
-                        <span class="text-gold opacity-60">:</span>
-                        <span id="hours">00</span>
-                        <span class="text-gold opacity-60">:</span>
-                        <span id="minutes">00</span>
-                        <span class="text-gold opacity-60">:</span>
-                        <span id="seconds">00</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- SMALL LUXURY MUSIC PLAYER -->
+    <div class="music-position">
+        <div class="music-player">
 
-        <!-- 3.JPG SECTION WITH HIDDEN CLICKABLE GOOGLE MAPS AREA -->
-        <section class="rounded-2xl overflow-hidden p-1 relative">
-            <div class="relative rounded-xl overflow-hidden shadow-lg">
-                <img src="3.JPG" alt="The Venue - Oheka Castle" class="w-full h-auto rounded-xl block" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=3.JPG';">
-                
-                <!-- Completely Hidden Map Link Overlay over "VIEW GOOGLE MAPS" region -->
-                <div onclick="openGoogleMaps()" class="absolute bottom-[38%] left-0 right-0 h-[12%] cursor-pointer" title="View Google Maps"></div>
-            </div>
-        </section>
+            <div class="flex items-center gap-3">
 
-        <!-- 4.jpg SECTION -->
-        <section class="rounded-2xl overflow-hidden p-1">
-            <img src="4.jpg" alt="Wedding Invitation Page 4" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=4.jpg';">
-        </section>
+                <button
+                    id="playPauseBtn"
+                    class="play-button"
+                    onclick="toggleAudio(event)"
+                    aria-label="Play music">
 
-        <!-- 5.jpg SECTION -->
-        <section class="rounded-2xl overflow-hidden p-1">
-            <img src="5.jpg" alt="Wedding Invitation Page 5" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=5.jpg';">
-        </section>
-
-        <!-- 6.jpg SECTION WITH HIDDEN RSVP CLICKABLE AREA -->
-        <section class="rounded-2xl overflow-hidden p-1 relative">
-            <div class="relative rounded-xl overflow-hidden shadow-lg">
-                <img src="6.jpg" alt="RSVP Section Page 6" class="w-full h-auto rounded-xl block" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=6.jpg';">
-                
-                <!-- Completely Hidden RSVP Trigger Overlay over RSVP Button region in image -->
-                <div onclick="openRsvpModal()" class="absolute bottom-[4%] left-[10%] right-[10%] h-[12%] cursor-pointer" title="Click to RSVP"></div>
-            </div>
-        </section>
-
-        <!-- 7.jpg SECTION -->
-        <section class="rounded-2xl overflow-hidden p-1">
-            <img src="7.jpg" alt="Wedding Invitation Page 7" class="w-full h-auto rounded-xl block shadow-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=7.jpg';">
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="relative z-10 text-center py-8 text-xs text-deeprose font-serif">
-        <p class="font-script text-2xl text-gold mb-1">With Love & Gratitude</p>
-        <p>© 2027 Celebration Invitation</p>
-    </footer>
-
-    <!-- RSVP MODAL (Matches Attached Reference Image) -->
-    <div id="rsvpModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-300">
-        <div class="relative w-full max-w-md bg-[#fdf5f7] rounded-3xl p-6 md:p-8 shadow-2xl border-2 border-gold max-h-[90vh] overflow-y-auto">
-            <!-- Close Button -->
-            <button onclick="closeRsvpModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-babypink text-deeprose flex items-center justify-center hover:bg-gold hover:text-white transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <!-- Modal Header -->
-            <div class="text-center mb-6">
-                <p class="font-script text-3xl text-gold">please</p>
-                <h2 class="font-serif text-4xl text-deeprose font-bold tracking-widest -mt-2">RSVP</h2>
-                <p class="font-script text-2xl text-gold mt-1">by July 15</p>
-            </div>
-
-            <!-- RSVP Form -->
-            <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)" class="space-y-4">
-                
-                <!-- Field 1: Name -->
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
-                    <label class="block text-xs font-semibold text-deeprose mb-2">
-                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> Your Name *
-                    </label>
-                    <input type="text" required placeholder="Your answer" class="w-full border-b border-gray-300 focus:border-gold focus:outline-none text-sm py-1 font-sans bg-transparent">
-                </div>
-
-                <!-- Field 2: Attendance -->
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
-                    <label class="block text-xs font-semibold text-deeprose mb-3">
-                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> Will you honor us with your presence on this special day? *
-                    </label>
-                    <div class="space-y-2 text-xs text-gray-700">
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="attendance" value="Yes" required class="accent-gold">
-                            <span>Yes, I'd love to!</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="attendance" value="No" class="accent-gold">
-                            <span>Sadly, I won't be able to attend.</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Field 3: Guest -->
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
-                    <label class="block text-xs font-semibold text-deeprose mb-3">
-                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> Will you be bringing a guest to share this special moment?
-                    </label>
-                    <div class="space-y-2 text-xs text-gray-700">
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="plusone" value="No" checked class="accent-gold">
-                            <span>No, I'll be attending on my own.</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="plusone" value="Yes" class="accent-gold">
-                            <span>Yes, I'll have someone joining me!</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Field 4: Guest Count -->
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gold/20">
-                    <label class="block text-xs font-semibold text-deeprose mb-3">
-                        <i class="fa-solid fa-heart text-[10px] mr-1 text-gold"></i> How many people will come?
-                    </label>
-                    <div class="space-y-2 text-xs text-gray-700">
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="count" value="1" checked class="accent-gold">
-                            <span>Only me</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="count" value="2" class="accent-gold">
-                            <span>2 People</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="count" value="3+" class="accent-gold">
-                            <span>3+ People</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-gold to-yellow-600 text-white rounded-full font-semibold text-sm tracking-widest shadow-md hover:opacity-90 active:scale-95 transition-transform">
-                    SUBMIT RSVP
+                    <i id="playIcon" class="fa-solid fa-play text-sm"></i>
                 </button>
-            </form>
 
-            <!-- Success Message Notification Container -->
-            <div id="rsvpSuccessMsg" class="hidden text-center py-8">
-                <i class="fa-solid fa-circle-check text-4xl text-gold mb-3"></i>
-                <h3 class="font-serif text-xl font-bold text-deeprose">Thank You!</h3>
-                <p class="text-xs text-gray-600 mt-2">Your response has been received successfully.</p>
-                <button onclick="closeRsvpModal()" class="mt-6 px-6 py-2 bg-babypink text-deeprose text-xs font-semibold rounded-full hover:bg-gold hover:text-white transition-colors">
-                    Close Window
-                </button>
+                <div>
+                    <div class="music-title">
+                        Romantic Piano Melodies
+                    </div>
+
+                    <div class="music-subtitle">
+                        A melody of love
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="equalizer" class="equalizer">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // --- 1. Audio Player Logic ---
-        const audio = document.getElementById('bgMusic');
-        const playIcon = document.getElementById('playIcon');
+</section>
 
-        function toggleAudio(e) {
-            if (e) e.stopPropagation();
-            if (audio.paused) {
-                audio.play().then(() => {
-                    playIcon.classList.remove('fa-play');
-                    playIcon.classList.add('fa-pause');
-                }).catch(err => {
-                    console.log("Audio play blocked by browser interaction policy.", err);
-                });
-            } else {
-                audio.pause();
-                playIcon.classList.remove('fa-pause');
-                playIcon.classList.add('fa-play');
-            }
+
+<!-- CONNECTED INVITATION GALLERY -->
+<main id="gallery">
+
+    <!-- 2.JPG + COUNTDOWN INSIDE THE IMAGE -->
+    <section class="gallery-section countdown-section">
+
+        <img
+            src="2.JPG"
+            alt="Wedding Invitation"
+            class="gallery-image"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=2.JPG';"
+        >
+
+        <div class="countdown-overlay">
+
+            <div class="countdown gold-text">
+
+                <span id="days">00</span>
+                <span class="separator">:</span>
+
+                <span id="hours">00</span>
+                <span class="separator">:</span>
+
+                <span id="minutes">00</span>
+                <span class="separator">:</span>
+
+                <span id="seconds">00</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 3.JPG ENTIRE IMAGE OPENS GOOGLE MAPS -->
+    <section class="gallery-section">
+
+        <img
+            src="3.JPG"
+            alt="Oheka Castle Venue"
+            class="gallery-image"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=3.JPG';"
+        >
+
+        <a
+            class="map-touch"
+            href="https://www.google.com/maps/search/?api=1&query=Oheka+Castle+135+West+Hills+Road+Huntington+NY+11743"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Oheka Castle in Google Maps">
+        </a>
+
+    </section>
+
+
+    <!-- 4.JPG -->
+    <section class="gallery-section">
+
+        <img
+            src="4.jpg"
+            alt="Wedding Invitation Page 4"
+            class="gallery-image"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=4.JPG';"
+        >
+
+    </section>
+
+
+    <!-- 5.JPG -->
+    <section class="gallery-section">
+
+        <img
+            src="5.jpg"
+            alt="Wedding Invitation Page 5"
+            class="gallery-image"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=5.JPG';"
+        >
+
+    </section>
+
+
+    <!-- 6.JPG + RSVP TOUCH AREA -->
+    <section class="gallery-section">
+
+        <img
+            src="6.jpg"
+            alt="RSVP Invitation"
+            class="gallery-image"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=6.JPG';"
+        >
+
+        <div
+            class="rsvp-touch"
+            onclick="openRsvpModal()"
+            aria-label="Open RSVP form">
+        </div>
+
+    </section>
+
+
+    <!-- 7.JPG -->
+    <section class="gallery-section">
+
+        <img
+            src="7.jpg"
+            alt="Wedding Invitation Page 7"
+            class="gallery-image"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=7.JPG';"
+        >
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p class="footer-script">With Love & Gratitude</p>
+
+    <p class="text-xs tracking-widest">
+        © 2027 Celebration Invitation
+    </p>
+
+</footer>
+
+
+<!-- RSVP MODAL -->
+<div id="rsvpModal" class="hidden">
+
+    <div class="modal-content">
+
+        <button
+            onclick="closeRsvpModal()"
+            class="absolute top-4 right-5 text-xl text-[#a85b6c]"
+            aria-label="Close RSVP">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="text-center mb-6">
+
+            <p class="text-3xl"
+               style="font-family:'Great Vibes';color:#bd914c;">
+                please
+            </p>
+
+            <h2 class="text-3xl font-bold tracking-widest"
+                style="font-family:'Playfair Display';color:#a85b6c;">
+                RSVP
+            </h2>
+
+            <p class="text-xl mt-1"
+               style="font-family:'Great Vibes';color:#bd914c;">
+                by July 15
+            </p>
+
+        </div>
+
+
+        <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)">
+
+            <!-- NAME -->
+            <div class="rsvp-field">
+
+                <label class="heading">
+                    <i class="fa-solid fa-heart text-[#d4af70]"></i>
+                    Your Name *
+                </label>
+
+                <input
+                    type="text"
+                    name="guestName"
+                    placeholder="Your answer"
+                    required
+                >
+
+            </div>
+
+
+            <!-- ATTENDANCE -->
+            <div class="rsvp-field">
+
+                <label class="heading">
+                    Will you honor us with your presence on this special day? *
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="attendance" value="Yes" required>
+                    Yes, I'd love to!
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="attendance" value="No">
+                    Sadly, I won't be able to attend.
+                </label>
+
+            </div>
+
+
+            <!-- PLUS ONE -->
+            <div class="rsvp-field">
+
+                <label class="heading">
+                    Will you be bringing a guest to share this special moment?
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="plusone" value="No" checked>
+                    No, I'll be attending on my own.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="plusone" value="Yes">
+                    Yes, I'll have someone joining me!
+                </label>
+
+            </div>
+
+
+            <!-- GUEST COUNT -->
+            <div class="rsvp-field">
+
+                <label class="heading">
+                    How many people will come?
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="count" value="1" checked>
+                    Only me
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="count" value="2">
+                    2 People
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="count" value="3+">
+                    3+ People
+                </label>
+
+            </div>
+
+
+            <button type="submit" class="submit-button">
+                SUBMIT RSVP
+            </button>
+
+        </form>
+
+
+        <!-- SUCCESS MESSAGE -->
+        <div id="rsvpSuccessMsg" class="hidden text-center py-8">
+
+            <i class="fa-solid fa-circle-check text-4xl text-[#bd914c]"></i>
+
+            <h3 class="text-xl mt-3 font-semibold"
+                style="font-family:'Playfair Display';color:#a85b6c;">
+                Thank You!
+            </h3>
+
+            <p class="text-xs text-gray-600 mt-2">
+                Your response has been received successfully.
+            </p>
+
+            <button
+                onclick="closeRsvpModal()"
+                class="mt-5 px-7 py-2 rounded-full text-sm"
+                style="background:#f4dce3;color:#a85b6c;">
+
+                Close Window
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+/* -------------------------
+   1. MUSIC PLAYER
+------------------------- */
+
+const audio = document.getElementById('bgMusic');
+const playIcon = document.getElementById('playIcon');
+const equalizer = document.getElementById('equalizer');
+
+function updateMusicPlayer(playing) {
+
+    if (playing) {
+
+        playIcon.classList.remove('fa-play');
+        playIcon.classList.add('fa-pause');
+
+        equalizer.classList.add('playing');
+
+    } else {
+
+        playIcon.classList.remove('fa-pause');
+        playIcon.classList.add('fa-play');
+
+        equalizer.classList.remove('playing');
+
+    }
+
+}
+
+async function toggleAudio(e) {
+
+    if (e) e.stopPropagation();
+
+    if (audio.paused) {
+
+        try {
+
+            await audio.play();
+            updateMusicPlayer(true);
+
+        } catch (error) {
+
+            console.log("Music playback could not start:", error);
+
         }
 
-        // --- 2. Smooth Scroll to Gallery ---
-        function scrollToGallery() {
-            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+    } else {
+
+        audio.pause();
+        updateMusicPlayer(false);
+
+    }
+
+}
+
+audio.addEventListener('play', () => updateMusicPlayer(true));
+audio.addEventListener('pause', () => updateMusicPlayer(false));
+
+
+/* -------------------------
+   2. COUNTDOWN
+   Wedding: July 22, 2027
+------------------------- */
+
+const targetDate = new Date(
+    'July 22, 2027 00:00:00'
+).getTime();
+
+function updateCountdown() {
+
+    const now = Date.now();
+    const difference = targetDate - now;
+
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    if (difference <= 0) {
+
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+
+        return;
+
+    }
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+        (difference % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (difference % (1000 * 60)) / 1000
+    );
+
+    daysEl.textContent = String(days).padStart(2, '0');
+    hoursEl.textContent = String(hours).padStart(2, '0');
+    minutesEl.textContent = String(minutes).padStart(2, '0');
+    secondsEl.textContent = String(seconds).padStart(2, '0');
+
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+
+/* -------------------------
+   3. RSVP MODAL
+------------------------- */
+
+function openRsvpModal() {
+
+    document.getElementById('rsvpModal').classList.remove('hidden');
+
+    document.body.style.overflow = 'hidden';
+
+}
+
+function closeRsvpModal() {
+
+    document.getElementById('rsvpModal').classList.add('hidden');
+
+    document.body.style.overflow = '';
+
+}
+
+function handleRsvpSubmit(e) {
+
+    e.preventDefault();
+
+    document.getElementById('rsvpForm').classList.add('hidden');
+
+    document.getElementById('rsvpSuccessMsg').classList.remove('hidden');
+
+}
+
+document.getElementById('rsvpModal').addEventListener('click', function(e) {
+
+    if (e.target === this) {
+        closeRsvpModal();
+    }
+
+});
+
+
+/* -------------------------
+   4. PINK & GOLD PARTICLES
+------------------------- */
+
+const canvas = document.getElementById('orbCanvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+
+function resizeCanvas() {
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+}
+
+resizeCanvas();
+
+window.addEventListener('resize', resizeCanvas);
+
+
+class TinyDot {
+
+    constructor() {
+        this.reset(true);
+    }
+
+    reset(initial = false) {
+
+        this.x = Math.random() * width;
+
+        this.y = initial
+            ? Math.random() * height
+            : height + 10;
+
+        this.radius = Math.random() * 1.5 + .5;
+
+        this.speedX = (Math.random() - .5) * .35;
+
+        this.speedY = -(Math.random() * .4 + .1);
+
+        this.alpha = Math.random() * .55 + .2;
+
+        this.gold = Math.random() > .45;
+
+    }
+
+    update() {
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.y < -10) {
+            this.reset();
         }
 
-        // --- 3. Open Google Maps for Oheka Castle ---
-        function openGoogleMaps() {
-            window.open('https://maps.google.com/?q=Oheka+Castle+135+West+Hills+Rd+Huntington+NY+11743', '_blank');
-        }
+    }
 
-        // --- 4. Live Countdown Timer (Target: July 22, 2027) ---
-        const targetDate = new Date('July 22, 2027 00:00:00').getTime();
+    draw() {
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
+        ctx.save();
 
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        ctx.globalAlpha = this.alpha;
 
-                document.getElementById('days').innerText = String(days).padStart(2, '0');
-                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-            } else {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        ctx.fillStyle = this.gold
+            ? '#d4af70'
+            : '#e8b5c1';
 
-        // --- 5. RSVP Modal Logic ---
-        function openRsvpModal() {
-            const modal = document.getElementById('rsvpModal');
-            modal.classList.remove('hidden');
-        }
+        ctx.shadowBlur = 7;
 
-        function closeRsvpModal() {
-            const modal = document.getElementById('rsvpModal');
-            modal.classList.add('hidden');
-        }
+        ctx.shadowColor = this.gold
+            ? '#f8e5b6'
+            : '#fff0f4';
 
-        function handleRsvpSubmit(e) {
-            e.preventDefault();
-            document.getElementById('rsvpForm').classList.add('hidden');
-            document.getElementById('rsvpSuccessMsg').classList.remove('hidden');
-        }
+        ctx.beginPath();
 
-        // --- 6. Floating Tiny Pink & Gold Glowing Dots (Particles) ---
-        const canvas = document.getElementById('orbCanvas');
-        const ctx = canvas.getContext('2d');
+        ctx.arc(
+            this.x,
+            this.y,
+            this.radius,
+            0,
+            Math.PI * 2
+        );
 
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        ctx.fill();
 
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
+        ctx.restore();
 
-        class TinyDot {
-            constructor() {
-                this.reset();
-            }
+    }
 
-            reset() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.radius = Math.random() * 1.8 + 0.6; // Tiny dot radius (0.6px to 2.4px)
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = -Math.random() * 0.5 - 0.1; // Gentle floating upward
-                this.alpha = Math.random() * 0.7 + 0.2;
-                this.isGold = Math.random() > 0.45;
-            }
+}
 
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
 
-                if (this.y < -10 || this.x < -10 || this.x > width + 10) {
-                    this.y = height + 10;
-                    this.x = Math.random() * width;
-                }
-            }
+const dots = Array.from(
+    { length: 65 },
+    () => new TinyDot()
+);
 
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
-                ctx.fillStyle = this.isGold ? '#d4af37' : '#f4c2c2';
-                ctx.shadowBlur = 6;
-                ctx.shadowColor = this.isGold ? '#f3e5ab' : '#ffffff';
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
 
-        // 90 tiny floating glowing dots across background
-        const dots = Array.from({ length: 90 }, () => new TinyDot());
+function animateDots() {
 
-        function animateDots() {
-            ctx.clearRect(0, 0, width, height);
-            dots.forEach(dot => {
-                dot.update();
-                dot.draw();
-            });
-            requestAnimationFrame(animateDots);
-        }
+    ctx.clearRect(0, 0, width, height);
 
-        window.onload = function() {
-            animateDots();
-        };
-    </script>
+    dots.forEach(dot => {
+
+        dot.update();
+        dot.draw();
+
+    });
+
+    requestAnimationFrame(animateDots);
+
+}
+
+animateDots();
+
+</script>
+
 </body>
 </html>
