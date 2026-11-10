@@ -39,22 +39,12 @@ body {
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
     color: #63434b;
-
-    /* Soft pink aesthetic background */
     background-color: #fcebed;
-    background-image:
-        linear-gradient(
-            rgba(255, 240, 244, 0.76),
-            rgba(255, 237, 242, 0.78)
-        ),
-        url('pink-aesthetic-bg.jpg'),
-        radial-gradient(circle at 15% 20%, #fff7f8, transparent 40%),
-        radial-gradient(circle at 85% 75%, #eec4cf, transparent 45%);
-
+    background-image: url('8.JPG');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 /* GOLD TEXT */
@@ -83,7 +73,7 @@ body {
     z-index: 8;
 }
 
-/* COVER */
+/* COVER VIDEO */
 
 #cover-section {
     position: relative;
@@ -102,16 +92,37 @@ body {
     object-fit: cover;
 }
 
+/* MUSIC INTRO */
+
+.music-intro {
+    position: relative;
+    z-index: 10;
+    padding: 20px 12px 24px;
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 238, 243, .96),
+        rgba(252, 232, 237, .88)
+    );
+}
+
+.music-message {
+    font-family: 'Great Vibes', cursive;
+    color: #bd914c;
+    font-size: 27px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    text-shadow: 0 1px 3px rgba(189,145,76,.12);
+}
+
 /* LUXURY MUSIC PLAYER */
 
 .music-position {
-    position: absolute;
+    position: static;
     z-index: 15;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 88%;
-    max-width: 300px;
+    max-width: 290px;
+    margin: 0 auto;
 }
 
 .music-player {
@@ -119,18 +130,14 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 9px 15px 9px 10px;
-
-    background: rgba(255, 237, 241, 0.84);
+    background: rgba(255, 237, 241, 0.92);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-
     border: 1px solid rgba(212, 175, 112, 0.85);
     border-radius: 50px;
-
     box-shadow:
         0 8px 25px rgba(122, 66, 78, 0.18),
         inset 0 1px 5px rgba(255,255,255,0.8);
-
     transition: all .3s ease;
 }
 
@@ -144,10 +151,8 @@ body {
     min-width: 38px;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,.7);
-
     color: white;
     background: linear-gradient(145deg, #e5b4c0, #a85b6c);
-
     box-shadow: 0 3px 12px rgba(168,91,108,.3);
     cursor: pointer;
 }
@@ -187,9 +192,11 @@ body {
 .equalizer span:nth-child(2) {
     animation-delay: .2s;
 }
+
 .equalizer span:nth-child(3) {
     animation-delay: .4s;
 }
+
 .equalizer span:nth-child(4) {
     animation-delay: .1s;
 }
@@ -241,37 +248,60 @@ body {
     right: 0;
     bottom: 2.5%;
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 8px 4px;
-    z-index: 3;
+    z-index: 9;
+    pointer-events: none;
 }
 
 .countdown {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(5px, 2vw, 15px);
-
+    gap: clamp(8px, 2.5vw, 18px);
     font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(23px, 6vw, 38px);
-    font-weight: 700;
-    letter-spacing: 2px;
     white-space: nowrap;
-
-    filter: drop-shadow(0 2px 4px rgba(90,50,30,.18));
 }
 
-.countdown span {
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 55px;
+}
+
+.countdown-item .number {
+    font-size: clamp(30px, 8vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1px;
     color: #bd914c;
+    -webkit-text-fill-color: #bd914c;
+    text-shadow:
+        0 1px 2px rgba(255,255,255,.9),
+        0 2px 5px rgba(90,50,30,.25);
+}
+
+.countdown-label {
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(8px, 2vw, 10px);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #a87935;
+    -webkit-text-fill-color: #a87935;
+    line-height: 1.2;
 }
 
 .countdown .separator {
-    color: #e3c58e;
-    font-size: .8em;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(22px, 5vw, 32px);
+    color: #d4af70;
+    -webkit-text-fill-color: #d4af70;
+    align-self: flex-start;
+    margin-top: 3px;
 }
 
 /* MAP ON ENTIRE 3.JPG */
@@ -339,11 +369,9 @@ footer {
     max-height: 90vh;
     overflow-y: auto;
     padding: 28px 22px;
-
     background: linear-gradient(145deg, #fff9fa, #f9e7ec);
     border: 1.5px solid #d4af70;
     border-radius: 25px;
-
     box-shadow: 0 15px 50px rgba(0,0,0,.2);
 }
 
@@ -408,12 +436,20 @@ footer {
     }
 
     .countdown {
-        font-size: clamp(21px, 6vw, 29px);
         gap: 5px;
     }
 
-    .music-position {
-        bottom: 20px;
+    .countdown-item {
+        min-width: 48px;
+    }
+
+    .countdown-item .number {
+        font-size: clamp(27px, 8vw, 36px);
+    }
+
+    .countdown-label {
+        font-size: 7px;
+        letter-spacing: 1px;
     }
 }
 </style>
@@ -430,37 +466,31 @@ footer {
 
 <!-- COVER VIDEO -->
 <section id="cover-section">
-
     <video id="heroVideo" autoplay loop muted playsinline>
         <source src="1.MOV" type="video/quicktime">
         <source src="1.MOV" type="video/mp4">
     </video>
+</section>
 
-    <!-- SMALL LUXURY MUSIC PLAYER -->
+<!-- MUSIC PLAYER AFTER COVER VIDEO -->
+<section class="music-intro">
+    <p class="music-message">A Melody for Our Forever</p>
+
     <div class="music-position">
         <div class="music-player">
-
             <div class="flex items-center gap-3">
-
                 <button
                     id="playPauseBtn"
                     class="play-button"
                     onclick="toggleAudio(event)"
                     aria-label="Play music">
-
                     <i id="playIcon" class="fa-solid fa-play text-sm"></i>
                 </button>
 
                 <div>
-                    <div class="music-title">
-                        Romantic Piano Melodies
-                    </div>
-
-                    <div class="music-subtitle">
-                        A melody of love
-                    </div>
+                    <div class="music-title">Romantic Piano Melodies</div>
+                    <div class="music-subtitle">A melody of love</div>
                 </div>
-
             </div>
 
             <div id="equalizer" class="equalizer">
@@ -469,19 +499,15 @@ footer {
                 <span></span>
                 <span></span>
             </div>
-
         </div>
     </div>
-
 </section>
-
 
 <!-- CONNECTED INVITATION GALLERY -->
 <main id="gallery">
 
-    <!-- 2.JPG + COUNTDOWN INSIDE THE IMAGE -->
+    <!-- 2.JPG + COUNTDOWN -->
     <section class="gallery-section countdown-section">
-
         <img
             src="2.JPG"
             alt="Wedding Invitation"
@@ -490,30 +516,40 @@ footer {
         >
 
         <div class="countdown-overlay">
+            <div class="countdown">
 
-            <div class="countdown gold-text">
+                <div class="countdown-item">
+                    <span class="number" id="days">00</span>
+                    <span class="countdown-label">DAYS</span>
+                </div>
 
-                <span id="days">00</span>
                 <span class="separator">:</span>
 
-                <span id="hours">00</span>
+                <div class="countdown-item">
+                    <span class="number" id="hours">00</span>
+                    <span class="countdown-label">HOURS</span>
+                </div>
+
                 <span class="separator">:</span>
 
-                <span id="minutes">00</span>
+                <div class="countdown-item">
+                    <span class="number" id="minutes">00</span>
+                    <span class="countdown-label">MINUTES</span>
+                </div>
+
                 <span class="separator">:</span>
 
-                <span id="seconds">00</span>
+                <div class="countdown-item">
+                    <span class="number" id="seconds">00</span>
+                    <span class="countdown-label">SECONDS</span>
+                </div>
 
             </div>
-
         </div>
-
     </section>
-
 
     <!-- 3.JPG ENTIRE IMAGE OPENS GOOGLE MAPS -->
     <section class="gallery-section">
-
         <img
             src="3.JPG"
             alt="Oheka Castle Venue"
@@ -528,39 +564,30 @@ footer {
             rel="noopener noreferrer"
             aria-label="Open Oheka Castle in Google Maps">
         </a>
-
     </section>
-
 
     <!-- 4.JPG -->
     <section class="gallery-section">
-
         <img
             src="4.jpg"
             alt="Wedding Invitation Page 4"
             class="gallery-image"
             onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=4.JPG';"
         >
-
     </section>
-
 
     <!-- 5.JPG -->
     <section class="gallery-section">
-
         <img
             src="5.jpg"
             alt="Wedding Invitation Page 5"
             class="gallery-image"
             onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=5.JPG';"
         >
-
     </section>
-
 
     <!-- 6.JPG + RSVP TOUCH AREA -->
     <section class="gallery-section">
-
         <img
             src="6.jpg"
             alt="RSVP Invitation"
@@ -573,54 +600,38 @@ footer {
             onclick="openRsvpModal()"
             aria-label="Open RSVP form">
         </div>
-
     </section>
-
 
     <!-- 7.JPG -->
     <section class="gallery-section">
-
         <img
             src="7.jpg"
             alt="Wedding Invitation Page 7"
             class="gallery-image"
             onerror="this.onerror=null;this.src='https://placehold.co/600x900/fde8ed/a85b6c?text=7.JPG';"
         >
-
     </section>
 
 </main>
 
-
 <!-- FOOTER -->
 <footer>
-
-    <p class="footer-script">With Love & Gratitude</p>
-
-    <p class="text-xs tracking-widest">
-        © 2027 Celebration Invitation
-    </p>
-
+    <p class="footer-script">With Love &amp; Gratitude</p>
+    <p class="text-xs tracking-widest">© Ivory Vows</p>
 </footer>
-
 
 <!-- RSVP MODAL -->
 <div id="rsvpModal" class="hidden">
-
     <div class="modal-content">
 
         <button
             onclick="closeRsvpModal()"
             class="absolute top-4 right-5 text-xl text-[#a85b6c]"
             aria-label="Close RSVP">
-
             <i class="fa-solid fa-xmark"></i>
-
         </button>
 
-
         <div class="text-center mb-6">
-
             <p class="text-3xl"
                style="font-family:'Great Vibes';color:#bd914c;">
                 please
@@ -635,15 +646,12 @@ footer {
                style="font-family:'Great Vibes';color:#bd914c;">
                 by July 15
             </p>
-
         </div>
-
 
         <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)">
 
             <!-- NAME -->
             <div class="rsvp-field">
-
                 <label class="heading">
                     <i class="fa-solid fa-heart text-[#d4af70]"></i>
                     Your Name *
@@ -655,13 +663,10 @@ footer {
                     placeholder="Your answer"
                     required
                 >
-
             </div>
-
 
             <!-- ATTENDANCE -->
             <div class="rsvp-field">
-
                 <label class="heading">
                     Will you honor us with your presence on this special day? *
                 </label>
@@ -675,13 +680,10 @@ footer {
                     <input type="radio" name="attendance" value="No">
                     Sadly, I won't be able to attend.
                 </label>
-
             </div>
-
 
             <!-- PLUS ONE -->
             <div class="rsvp-field">
-
                 <label class="heading">
                     Will you be bringing a guest to share this special moment?
                 </label>
@@ -695,13 +697,10 @@ footer {
                     <input type="radio" name="plusone" value="Yes">
                     Yes, I'll have someone joining me!
                 </label>
-
             </div>
-
 
             <!-- GUEST COUNT -->
             <div class="rsvp-field">
-
                 <label class="heading">
                     How many people will come?
                 </label>
@@ -720,20 +719,15 @@ footer {
                     <input type="radio" name="count" value="3+">
                     3+ People
                 </label>
-
             </div>
-
 
             <button type="submit" class="submit-button">
                 SUBMIT RSVP
             </button>
-
         </form>
-
 
         <!-- SUCCESS MESSAGE -->
         <div id="rsvpSuccessMsg" class="hidden text-center py-8">
-
             <i class="fa-solid fa-circle-check text-4xl text-[#bd914c]"></i>
 
             <h3 class="text-xl mt-3 font-semibold"
@@ -749,90 +743,61 @@ footer {
                 onclick="closeRsvpModal()"
                 class="mt-5 px-7 py-2 rounded-full text-sm"
                 style="background:#f4dce3;color:#a85b6c;">
-
                 Close Window
-
             </button>
-
         </div>
 
     </div>
-
 </div>
-
 
 <!-- JAVASCRIPT -->
 <script>
 
-/* -------------------------
-   1. MUSIC PLAYER
-------------------------- */
+/* 1. MUSIC PLAYER */
 
 const audio = document.getElementById('bgMusic');
 const playIcon = document.getElementById('playIcon');
 const equalizer = document.getElementById('equalizer');
 
 function updateMusicPlayer(playing) {
-
     if (playing) {
-
         playIcon.classList.remove('fa-play');
         playIcon.classList.add('fa-pause');
-
         equalizer.classList.add('playing');
-
     } else {
-
         playIcon.classList.remove('fa-pause');
         playIcon.classList.add('fa-play');
-
         equalizer.classList.remove('playing');
-
     }
-
 }
 
 async function toggleAudio(e) {
-
     if (e) e.stopPropagation();
 
     if (audio.paused) {
-
         try {
-
             await audio.play();
             updateMusicPlayer(true);
-
         } catch (error) {
-
             console.log("Music playback could not start:", error);
-
         }
-
     } else {
-
         audio.pause();
         updateMusicPlayer(false);
-
     }
-
 }
 
 audio.addEventListener('play', () => updateMusicPlayer(true));
 audio.addEventListener('pause', () => updateMusicPlayer(false));
 
 
-/* -------------------------
-   2. COUNTDOWN
-   Wedding: July 22, 2027
-------------------------- */
+/* 2. COUNTDOWN - JULY 22, 2027 */
 
 const targetDate = new Date(
     'July 22, 2027 00:00:00'
 ).getTime();
 
 function updateCountdown() {
-
     const now = Date.now();
     const difference = targetDate - now;
 
@@ -842,14 +807,11 @@ function updateCountdown() {
     const secondsEl = document.getElementById('seconds');
 
     if (difference <= 0) {
-
         daysEl.textContent = '00';
         hoursEl.textContent = '00';
         minutesEl.textContent = '00';
         secondsEl.textContent = '00';
-
         return;
-
     }
 
     const days = Math.floor(
@@ -874,55 +836,39 @@ function updateCountdown() {
     hoursEl.textContent = String(hours).padStart(2, '0');
     minutesEl.textContent = String(minutes).padStart(2, '0');
     secondsEl.textContent = String(seconds).padStart(2, '0');
-
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
 
-/* -------------------------
-   3. RSVP MODAL
-------------------------- */
+/* 3. RSVP MODAL */
 
 function openRsvpModal() {
-
     document.getElementById('rsvpModal').classList.remove('hidden');
-
     document.body.style.overflow = 'hidden';
-
 }
 
 function closeRsvpModal() {
-
     document.getElementById('rsvpModal').classList.add('hidden');
-
     document.body.style.overflow = '';
-
 }
 
 function handleRsvpSubmit(e) {
-
     e.preventDefault();
 
     document.getElementById('rsvpForm').classList.add('hidden');
-
     document.getElementById('rsvpSuccessMsg').classList.remove('hidden');
-
 }
 
 document.getElementById('rsvpModal').addEventListener('click', function(e) {
-
     if (e.target === this) {
         closeRsvpModal();
     }
-
 });
 
 
-/* -------------------------
-   4. PINK & GOLD PARTICLES
-------------------------- */
+/* 4. PINK & GOLD PARTICLES */
 
 const canvas = document.getElementById('orbCanvas');
 const ctx = canvas.getContext('2d');
@@ -930,7 +876,6 @@ const ctx = canvas.getContext('2d');
 let width, height;
 
 function resizeCanvas() {
-
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     width = window.innerWidth;
@@ -940,22 +885,17 @@ function resizeCanvas() {
     canvas.height = height * dpr;
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
 }
 
 resizeCanvas();
-
 window.addEventListener('resize', resizeCanvas);
 
-
 class TinyDot {
-
     constructor() {
         this.reset(true);
     }
 
     reset(initial = false) {
-
         this.x = Math.random() * width;
 
         this.y = initial
@@ -963,30 +903,22 @@ class TinyDot {
             : height + 10;
 
         this.radius = Math.random() * 1.5 + .5;
-
         this.speedX = (Math.random() - .5) * .35;
-
         this.speedY = -(Math.random() * .4 + .1);
-
         this.alpha = Math.random() * .55 + .2;
-
         this.gold = Math.random() > .45;
-
     }
 
     update() {
-
         this.x += this.speedX;
         this.y += this.speedY;
 
         if (this.y < -10) {
             this.reset();
         }
-
     }
 
     draw() {
-
         ctx.save();
 
         ctx.globalAlpha = this.alpha;
@@ -1012,33 +944,24 @@ class TinyDot {
         );
 
         ctx.fill();
-
         ctx.restore();
-
     }
-
 }
-
 
 const dots = Array.from(
     { length: 65 },
     () => new TinyDot()
 );
 
-
 function animateDots() {
-
     ctx.clearRect(0, 0, width, height);
 
     dots.forEach(dot => {
-
         dot.update();
         dot.draw();
-
     });
 
     requestAnimationFrame(animateDots);
-
 }
 
 animateDots();
